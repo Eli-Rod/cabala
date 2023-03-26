@@ -2,10 +2,13 @@ import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 
 import * as Animatable from 'react-native-animatable'
+import { useNavigation } from "@react-navigation/native";
 
 import styles from './styles';
 
 export default function SignIn() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Animatable.View
@@ -19,6 +22,7 @@ export default function SignIn() {
       <Animatable.View
         animation="fadeInUp"
         style={styles.containerForm}
+        delay={500}
       >
         <Text style={styles.title}>Email</Text>
         <TextInput
@@ -32,7 +36,10 @@ export default function SignIn() {
           style={styles.input}
         />
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Home')}
+        >
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
 
