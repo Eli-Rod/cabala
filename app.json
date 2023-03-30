@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "app-cabala",
-    "slug": "app-cabala",
+    "name": "cabalaapp",
+    "slug": "cabalaapp",
+    "scheme": "cabalaapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +26,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f84198f0-0340-4816-930b-ba15d0f543fd"
+      }
+    },
+    "owner": "eli.rod"
   }
 }
