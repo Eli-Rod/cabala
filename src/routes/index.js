@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import Welcome from '../pages/Welcome';
 import SignIn from '../pages/Signin';
 import Home from '../pages/Home';
+import Loading from '../components/Loading';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -37,6 +38,15 @@ export default function Routes() {
           component={Home}
           options={{
             tabBarStyle: { display: "flex" },
+            headerShown: false
+          }}
+        />
+
+        <Tab.Screen
+          name="Loading"
+          component={Loading}
+          options={{
+            tabBarStyle: { display: "none" },
             headerShown: false
           }}
         />

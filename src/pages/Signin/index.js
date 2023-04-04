@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import * as AuthSession from 'expo-auth-session';
+import { CLIENT_ID, REDIRECT_URI, SCOPE, RESPONSE_TYPE } from '@env';
 
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 
@@ -8,21 +9,28 @@ import { useNavigation } from "@react-navigation/native";
 
 import styles from './styles';
 
-export default function SignIn() {
+export default function SignIn({ navigation: { userData } }) {
   const navigation = useNavigation();
+  const [load, setLoad] = useState(false);
+  const [user, setUser] = useState({});
+
 
   async function handleGoogleSignIn() {
     try {
-      const CLIENT_ID = '1059005890895-bglff5kmuad8682t7thos4jun02ahs1d.apps.googleusercontent.com';
-      const REDIRECT_URI = 'https://auth.expo.io/@eli.rod/cabalaapp';
-      const SCOPE = encodeURI('profile email');
-      const RESPONSE_TYPE = 'token';
+      const encodeUriScope = encodeURI(SCOPE);
+      const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${encodeUriScope}`;
 
-      const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}$scope=${SCOPE}`;
-      console.log({ authUrl })
-      const authSessionGoogle = await AuthSession.startAsync({ authUrl });
-      console.log(' ================Resultado requisição ================')
-      console.log({ authSessionGoogle })
+      const { type, params } = await AuthSession.startAsync({ authUrl });
+
+      // const authSessionGoogle = await AuthSession.startAsync({ authUrl });
+
+      if (type == 'success') {
+        const response = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`);
+        const userData = await response.json();
+        setUser(userData)
+        navigation.navigate('Home', { userData })
+        setLoad(false);
+      }
     } catch (error) {
       console.log('Session Google não conectada: ' + error);
     }
@@ -59,7 +67,8 @@ export default function SignIn() {
           style={styles.button}
           onPress={() => {
             // navigation.navigate('Home'),
-            handleGoogleSignIn()
+            setLoad(true),
+              handleGoogleSignIn()
           }}
         >
           <Text style={styles.buttonText}>Acessar</Text>

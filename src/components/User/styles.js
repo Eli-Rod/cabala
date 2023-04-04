@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
   container: {
@@ -58,14 +58,5 @@ export default styles = StyleSheet.create({
   },
   containerAcessar: {
     flex: 1,
-  },
-  userImage: {
-    backgroundColor: '#fffaaa',
-    flex: 2,
-    width: '100%'
-  },
-  userNome: {
-    backgroundColor: '#004343',
-    flex: 2
   },
 })
