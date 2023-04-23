@@ -1,44 +1,59 @@
-import React from "react";
-
+import React, { useReducer } from "react";
 import {
   View,
-  Text,
   Image,
-  TouchableOpacity
+  Text,
 } from 'react-native';
 
-export default function User({user}) {
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+
+
+function userDrawer() {
+  const navigation = useNavigation();
+  const Drawer = createDrawerNavigator();
+  console.log('Entrou no userDrawer')
+
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" onPress={() => navigation.navigate('Home')}>Home</Drawer.Screen>
+        <Drawer.Screen name="SignIn" onPress={() => navigation.navigate('SignIn')}>SignIn</Drawer.Screen>
+        <Drawer.Screen name="Welcome" onPress={() => navigation.navigate('Welcome')}>Assinaturas</Drawer.Screen>
+      </Drawer.Navigator>
+    </NavigationContainer>
+  )
+}
+
+
+export default function User({
+  userImage,
+  userName,
+  userEmail
+}) {
+
   console.log('========================================')
-  console.log({user})
+  console.log({ userImage })
+  console.log({ userName })
+  console.log({ userEmail })
   console.log('========================================')
   return (
-    <View style={styles.container}>
-
-      <View style={styles.containerLogo}>
-        <Animatable.Image
-          animation="flipInY"
-          delay={400}
-          // source={require(user.picture)}
-          style={{ width: '100%' }}
-          resizeMode="contain"
-        >
-          {user.picture}
-        </Animatable.Image>
+    <View >
 
 
-      </View> 
+      <Image
+        source={require('../../assets/logoArvoreCabala250.png')}
+        onPress={() => {
+          console.log('aqui')
+          userDrawer()
+        }
+        }
+      // source={{ uri: 'https://lh3.googleusercontent.com/a/AGNmyxZuGAkQ08Z0uQ9wQta6DYzLl3MMNgNYjo7bvrby=s96-c' }}
+      // source={require('../../assets/logoArvoreCabala250.png')}
+      />
 
-      <Animatable.View delay={1100} animation="fadeInUp" style={styles.containerForm}>
-        <Text style={styles.title}>Monte seu mapa cabalístico</Text>
-        <Text style={styles.textLogin}>Faça o login para começar</Text>
-
-        <TouchableOpacity 
-          style={styles.button}
-          onPress={() => navigation.navigate('SignIn')}
-        >
-          <Text style={styles.buttonText}>Acessar</Text>
-        </TouchableOpacity>
-      </Animatable.View>
+      <Text>Nome: {userName}</Text>
+      <Text>E-mail: {userEmail}</Text>
 
     </View>
   )

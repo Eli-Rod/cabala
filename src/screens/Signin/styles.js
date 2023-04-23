@@ -59,21 +59,4 @@ export default styles = StyleSheet.create({
   containerAcessar: {
     flex: 1,
   },
-  userImage: {
-    backgroundColor: '#fffaaa',
-    flex: 2,
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  userNome: {
-    backgroundColor: '#372d62',
-    flex: 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-
-  },
-  image: {
-  }
 })
