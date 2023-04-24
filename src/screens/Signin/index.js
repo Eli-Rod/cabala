@@ -24,12 +24,10 @@ export default function SignIn({ navigation: { userData } }) {
       const { type, params } = await AuthSession.startAsync({ authUrl });
 
       // const authSessionGoogle = await AuthSession.startAsync({ authUrl });
-
       if (type == 'success') {
         const response = await fetch(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`);
         const userData = await response.json();
         setUser(userData)
-        console.log(userData)
         navigation.navigate('Home', { userData })
         setLoad(false);
       }
@@ -40,6 +38,16 @@ export default function SignIn({ navigation: { userData } }) {
 
   return (
     <View style={styles.container}>
+      <View style={styles.containerLogo}>
+        <Animatable.Image
+          animation="flipInY"
+          delay={400}
+          source={require('../../assets/logoArvoreCabala250.png')}
+          style={{ width: '100%' }}
+          resizeMode="contain"
+        />
+      </View>
+
       <Animatable.View
         animation="fadeInLeft"
         delay={500}

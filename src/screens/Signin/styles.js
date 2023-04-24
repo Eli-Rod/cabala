@@ -5,9 +5,15 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#372d62',
   },
+  containerLogo: {
+    flex: 2,
+    backgroundColor: '#372d62',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   containerHeader: {
-    marginTop: '14%',
-    marginBottom: '8%',
+    // marginTop: '3%',
+    marginBottom: '3%',
     paddingStart: '5%'
   },
   message: {
@@ -18,22 +24,22 @@ export default styles = StyleSheet.create({
   containerForm: {
     backgroundColor: '#fff',
     opacity: 0.5,
-    flex: 1,
+    flex: 2,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
-    marginTop: '14%',
+    marginTop: '1%',
     paddingStart: '5%',
     paddingEnd: '5%',
   },
   title: {
-    fontSize: 17,
+    fontSize: 15,
     marginTop: 28,
   },
   input: {
     borderBottomWidth: 1,
     height: 40,
     marginBottom: 12,
-    fontSize: 16
+    fontSize: 15
   },
   button: {
     backgroundColor: '#1ce9cb',
@@ -41,7 +47,7 @@ export default styles = StyleSheet.create({
     borderRadius: 4,
     paddingVertical: 8,
     borderRadius: 50,
-    marginTop: '70%',
+    marginTop: '8%',
     justifyContent: 'center',
     alignItems: 'center'
   },
