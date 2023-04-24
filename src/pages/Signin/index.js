@@ -15,6 +15,9 @@ export default function SignIn({ navigation: { userData } }) {
   const [load, setLoad] = useState(false);
   const [user, setUser] = useState({});
 
+  console.log('=======================================')
+  console.log(userData)
+  console.log('=======================================')
 
   async function handleGoogleSignIn() {
     try {
@@ -40,11 +43,22 @@ export default function SignIn({ navigation: { userData } }) {
 
   return (
     <View style={styles.container}>
+
       <Animatable.View
         animation="fadeInLeft"
         delay={500}
         style={styles.containerHeader}
       >
+        <View style={styles.containerLogo}>
+          <Animatable.Image
+            animation="flipInY"
+            delay={400}
+            source={require('../../assets/logoArvoreCabala250.png')}
+            style={{ width: '50%' }}
+            resizeMode="contain"
+          />
+        </View>
+        <Text style={styles.message}>Bem Vindo(a)</Text>
         <Text style={styles.message}>Bem Vindo(a)</Text>
       </Animatable.View>
 

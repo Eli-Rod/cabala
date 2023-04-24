@@ -5,6 +5,12 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#372d62',
   },
+  containerLogo: {
+    flex: 2,
+    backgroundColor: '#372d62',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   containerHeader: {
     marginTop: '14%',
     marginBottom: '8%',

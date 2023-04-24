@@ -18,12 +18,12 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import styles from './styles';
 import User from "../../components/User";
 
-export default function Home({user, navigation}) {
+export default function Home({userData, navigation}) {
   // const navigation = useNavigation();
   const Drawer = createDrawerNavigator();
   // const Tab = createMaterialBottomTabNavigator();
   // const Tab = createBottomTabNavigator();
-  console.log({user})
+  console.log({userData})
   console.log({navigation})
   return
   const userEmail = user.route.params.userData.email;

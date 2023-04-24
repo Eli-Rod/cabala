@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   View,
   Text,
@@ -12,7 +12,7 @@ import { useNavigation } from '@react-navigation/native'
 import styles from './styles'
 
 export default function Welcome() {
-const navigation = useNavigation();
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -25,15 +25,15 @@ const navigation = useNavigation();
           style={{ width: '100%' }}
           resizeMode="contain"
         />
-      </View> 
+      </View>
 
       <Animatable.View delay={1100} animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.title}>Monte seu mapa cabalístico</Text>
         <Text style={styles.textLogin}>Faça o login para começar</Text>
 
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('SignIn')}
+          onPress={() => navigation.navigate('Signin')}
         >
           <Text style={styles.buttonText}>Acessar</Text>
         </TouchableOpacity>
