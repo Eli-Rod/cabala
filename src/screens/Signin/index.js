@@ -10,7 +10,8 @@ import { useNavigation } from "@react-navigation/native";
 
 import styles from './styles';
 
-export default function SignIn({ navigation: { userData } }) {
+// export default function SignIn({ navigation: { userData } }) {
+export default function SignIn({ userData }) {
   const navigation = useNavigation();
   const [load, setLoad] = useState(false);
   const [user, setUser] = useState({});
