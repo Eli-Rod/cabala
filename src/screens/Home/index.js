@@ -18,38 +18,45 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import styles from './styles';
 import User from "../../components/User";
 
-export default function Home({userData, navigation}) {
+export default function Home(userData, { navigation }) {
   // const navigation = useNavigation();
   const Drawer = createDrawerNavigator();
   // const Tab = createMaterialBottomTabNavigator();
   // const Tab = createBottomTabNavigator();
-  console.log({userData})
-  console.log({navigation})
-  return
-  const userEmail = user.route.params.userData.email;
-  const userNome = user.route.params.userData.name;
-  const userImage = user.route.params.userData.picture;
+  let dados = userData['route']['params']['userData']
 
+  const userEmail = dados.email;
+  const userNome = dados.name;
+  const userImage = dados.picture;
+  console.log(typeof(userImage))
   // console.log({ userEmail })
   // console.log({ userNome })
   // console.log({ userImage })
+
   return (
     <View style={styles.container}>
       {/* <View style={styles.userImage}>
-        {/* <Image
-          // source={{ uri: userImage }}
-          source={{ uri: 'http://www.saopaulofc.net/media/246288/IMG_8284_crop_galeria.jpg' }}
+        <Image
+          source={{ uri: userImage }}
+          // source={{ uri: 'http://www.saopaulofc.net/media/246288/IMG_8284_crop_galeria.jpg' }}
           // source={require('../../assets/logoArvoreCabala250.png')}
           style={styles.image}
-        /> 
-        <User 
+        />
+        <User
           userImage={userImage}
           userName={userNome}
-          userEmail={userEmail}          
+          userEmail={userEmail}
         />
       </View> */}
 
       <View style={styles.userNome}>
+        <Image
+          // source={ console.log(`${userImage}`) }
+          source={{ uri: `${userImage}` }}
+          // source={require('../../assets/logoArvoreCabala250.png')}
+          style={styles.image}
+        />
+
         <Animatable.View
           animation="fadeInLeft"
           delay={500}
@@ -75,13 +82,13 @@ export default function Home({userData, navigation}) {
         <Tab.Screen name="Welcome" component={Welcome} options={{tabBarStyle: { display: "none" }}} />
       </Tab.Navigator> */}
 
-      <NavigationContainer>
+      {/* <NavigationContainer>
         <Drawer.Navigator>
           <Drawer.Screen name="Home" onPress={() => navigation.navigate('Home')}>Home</Drawer.Screen>
           <Drawer.Screen name="SignIn" onPress={() => navigation.navigate('SignIn')}>SignIn</Drawer.Screen>
           <Drawer.Screen name="Welcome" onPress={() => navigation.navigate('Welcome')}>Assinaturas</Drawer.Screen>
         </Drawer.Navigator>
-      </NavigationContainer>
+      </NavigationContainer> */}
     </View>
   )
 }
